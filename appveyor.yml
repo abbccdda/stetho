@@ -2,6 +2,8 @@ environment:
   ANDROID_HOME: C:\Program Files (x86)\Android\android-sdk
 
 install:
+  - ps: Start-FileDownload 'https://dl.google.com/android/android-sdk_r24.4.1-windows.zip'
+  - echo y | 7z x android-sdk_r24.4.1-windows.zip -o"%ANDROID_HOME%" 
   - echo y | "%ANDROID_HOME%\tools\android.bat" list sdk
   - echo y | "%ANDROID_HOME%\tools\android.bat" --silent update sdk --no-ui --all --filter android-23
   - echo y | "%ANDROID_HOME%\tools\android.bat" update sdk -u -a -t tools, platform-tools, extra-android-support, extra-android-m2repository, build-tools-23.0.1
